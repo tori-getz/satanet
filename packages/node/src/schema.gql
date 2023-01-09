@@ -1,0 +1,29 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Block {
+  id: ID!
+  difficulty: Float!
+  nonce: Float!
+  timestamp: String!
+  lastHash: String!
+  hash: String!
+  data: String!
+}
+
+type Query {
+  genesisBlock: Block!
+  lastBlock: Block!
+  blocks(count: Float!): [Block!]!
+}
+
+type Mutation {
+  addBlock(data: String!): Block!
+  sendMessage(command: CommandDto!): String!
+}
+
+input CommandDto {
+  cmd: String!
+  args: String!
+}

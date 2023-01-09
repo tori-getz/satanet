@@ -1,0 +1,28 @@
+{
+  "name": "satanet-blockchain",
+  "private": true,
+  "version": "1.0.0",
+  "license": "MIT",
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "lerna": "^6.4.0",
+    "prettier": "^2.8.2"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "yarn bootstrap --use-workspaces",
+    "prettier:fix": "yarn prettier --write .",
+    "build": "yarn lerna run build",
+    "clean": "yarn lerna run clean",
+    "testnet:kill": "pm2 del satanet",
+    "testnet:start": "pm2 start testnet.config.js && pm2 monit",
+    "testnet": "yarn testnet:start",
+    "start:node": "yarn workspace @satanet/node start:dev",
+    "cli": "yarn workspace @satanet/cli cli"
+  },
+  "bin": {
+    "satanet-cli": "./packages/cli/dist/main.js"
+  }
+}
